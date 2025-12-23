@@ -3,9 +3,15 @@ console.log('***** Cart Functions *****');
 // We want to see how you are testing your code!!!
 
 let basket=[];
+const maxItems = 5;
+
+
+
 function addItem(item)
 {
 basket.push(item)
+
+
 return true;
 }
 
@@ -28,7 +34,44 @@ function empty() {
     }
 }
 
-console.log(empty(basket))
+console.log(empty(basket)[i])
+
+
+// function isFull(basket, maxItems) {
+//   if (basket.length < maxItems) {
+//     return false;
+//   }
+//   return true;
+// }
+function isFull() {
+  if (basket.length < maxItems) {
+    return false;
+  }
+  return true;
+}
+
+function addItem(item) {
+  if (isFull()) {
+    // basket is full → do not add item
+    return false;
+  } else {
+    basket.push(item);
+    return true;
+  }
+}
+
+function removeItem(item) {
+  const index = basket.indexOf(item);
+
+  if (index === -1) {
+    return null;
+  }
+
+  const removedItems = basket.splice(index, 1);
+  return removedItems[0];
+}
+
+
 
 
 
